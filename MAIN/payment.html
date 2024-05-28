@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NACOS Dues Payment - Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 800px; 
+        }
+        header {
+            background-color: rgb(60, 179, 113);
+            color: #fff;
+            padding: 10px 20px;
+            padding-bottom: 2px;
+            text-align: center;
+        }
+        nav {
+            background-color: gray;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            margin: 0 10px;
+        } 
+        a:hover, a:active {
+         background-color: whitesmoke;
+        }
+        form {
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 400px;
+            margin-bottom: 60px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        button[type="button"] {
+            background-color: #f44336;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            float: left;
+            transition: background-color 0.3s;
+        }
+        button[type="button"]:hover {
+            background-color: #d32f2f;
+        }
+        footer {
+            background-color: rgb(60, 179, 113);
+            color: #fff;
+            text-align: center;
+            padding: 0px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NACOS Dues Payment</h1>
+        <p>Payment Page</p>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="payment.html">Payment</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <form id="paymentForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="level">Level:</label>
+        <input type="text" id="level" name="level" required>
+
+        <label for="matricNumber">Matric Number:</label>
+        <input type="text" id="matricNumber" name="matricNumber" required>
+
+        <label for="dues">Dues:</label>
+        <select id="dues" name="dues" required>
+            <option value="">Select Dues</option>
+            <option value="NACOS Dues">NACOS Dues</option>
+        </select>
+
+        <label for="amount">Amount (₦):</label>
+        <input type="text" id="amount" name="amount" value="3000" readonly required>
+
+        <button type="button" onclick="history.back()">Back</button>
+        <input type="submit" id="confirmButton" value="Confirm" disabled>
+    </form>
+    
+    <footer>
+        <p>&copy; 2024 NACOS </p>
+    </footer>
+
+    <script>
+        // Enable confirm button only if all fields are filled
+        const form = document.getElementById('paymentForm');
+        const confirmButton = document.getElementById('confirmButton');
+
+        form.addEventListener('input', function() {
+            const inputs = Array.from(form.querySelectorAll('input, select'));
+            const allFilled = inputs.every(input => input.value.trim() !== '');
+            confirmButton.disabled = !allFilled;
+        });
+    </script>
+</body>
+</html>
